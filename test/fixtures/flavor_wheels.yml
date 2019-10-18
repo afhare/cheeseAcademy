@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cheese: one
+  flavor: one
+  rating: 1
+
+two:
+  cheese: two
+  flavor: two
+  rating: 1

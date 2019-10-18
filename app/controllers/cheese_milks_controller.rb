@@ -1,0 +1,2 @@
+class CheeseMilksController < ApplicationController
+end
