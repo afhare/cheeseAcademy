@@ -1,15 +1,15 @@
-<h1>@cheese.name</h1>
+<h1><%=@cheese.name%></h1>
 <h2>Characteristics:</h2>
 <ul>
-    <li>@cheese.origin</li>
+    <li><%=@cheese.origin%></li>
     <% if @cheese.creamery %>
-        <li>@cheese.creamery</li>
+        <li><%=@cheese.creamery%></li>
     <% end %>
-    <li>@cheese.rind</li>
+    <li><%=@cheese.rind%></li>
     <li>Milk:</li>
         <ul>
             <% @cheese.milks.each do |milk| %>
-                <li>milk.kind</li>
-            <% end
+                <li><%=milk.kind%></li>
+            <% end %>
         </ul>
 </ul>
