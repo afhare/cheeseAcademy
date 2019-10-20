@@ -5,7 +5,7 @@
     <% if @cheese.creamery %>
         <li><%=@cheese.creamery%></li>
     <% end %>
-    <li><%=@cheese.rind%></li>
+    <li>Type of Rind:<%=@cheese.rind%></li>
     <li>Milk:</li>
         <ul>
             <% @cheese.milks.each do |milk| %>
@@ -13,3 +13,10 @@
             <% end %>
         </ul>
 </ul>
+<h5><%=@cheese.name%>'s Flavor Profile:</h5>
+    <% @cheese.flavor_wheels.each do |flav| %>
+        <p><strong><%= flav.flavor.kind %></strong> : <%= flav.level %> </p>
+    <% end %>
+    <% @other_flavors.each do |other_flavor| %>
+            <p><em><%= other_flavor %> : 0 </em></p>
+    <% end %>
