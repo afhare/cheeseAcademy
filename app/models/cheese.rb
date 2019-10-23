@@ -6,4 +6,5 @@ class Cheese < ApplicationRecord
     has_many :milks, through: :cheese_milks
     has_many :flavors, through: :flavor_wheels
     validates :rind, inclusion: { in: %w(bloomy cloth washed waxed fresh/none)}
+    accepts_nested_attributes_for :flavor_wheels, :cheese_milks, :cheese_textures
 end

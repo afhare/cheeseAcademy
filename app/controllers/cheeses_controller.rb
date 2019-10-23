@@ -18,4 +18,23 @@ class CheesesController < ApplicationController
         end
 
     end
+
+    def new
+        @cheese = Cheese.new
+        @flavors = Flavor.all
+        @milks = Milk.all
+        @textures = Texture.all
+    end
+
+    def create
+        @cheese = Cheese.new(cheese_params)
+        if @cheese.valid?
+            @cheese.save
+            redirect_to cheese_path(@cheese)
+        else
+            @errors = @cheese.errors.full_messages
+            render :new
+        end
+    end
+
 end

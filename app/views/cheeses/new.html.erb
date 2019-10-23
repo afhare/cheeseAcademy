@@ -1,0 +1,43 @@
+<h2>Add a cheese to your library</h2>
+<div class="container">
+<%= form_for @cheese do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :creamery %>
+  <%= f.text_field :creamery %><br>
+
+  <%= f.label :origin %>
+  <%= f.text_field :origin %><br>
+
+  <%= f.label :rind %>
+  <%= f.text_field :rind %><br>
+
+  <%= f.label :notes %>
+  <%= f.text_area :notes %><br>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating, in:0...6 %><br>
+
+  <%= f.label :flavor_wheels, "Create this cheese's 'flavor wheel': " %><br>
+  <%= f.collection_check_boxes :flavor_wheels, @flavors, :id, :kind %>
+
+  <p>TEST CODE</p>
+  <ul>
+    <%= f.collection_check_boxes :flavor_wheels, @flavors, :id, :kind do |b| %>
+  <li>
+    <%= b.label %>
+    <%= b.check_box %>
+  </li>
+    <% end %>
+</ul>
+
+  <%= f.label :cheese_milks, "This cheese is made with: " %><br>
+  <%= f.collection_check_boxes :cheese_milks, @milks, :id, :kind %><br>
+
+  <%= f.label :cheese_textures, "This cheese has the following texture(s): " %><br>
+  <%= f.collection_check_boxes :cheese_textures, @textures, :id, :kind %><br>
+
+  <%= f.submit "Create", class: "submit-button" %>
+<% end %>
+</div>
