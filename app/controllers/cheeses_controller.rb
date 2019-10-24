@@ -27,14 +27,15 @@ class CheesesController < ApplicationController
     end
 
     def create
-        @cheese = Cheese.new(cheese_params)
-        if @cheese.valid?
-            @cheese.save
-            redirect_to cheese_path(@cheese)
-        else
-            @errors = @cheese.errors.full_messages
-            render :new
-        end
+        p params
+        # @cheese = Cheese.new(cheese_params)
+        # if @cheese.valid?
+        #     @cheese.save
+        #     redirect_to cheese_path(@cheese)
+        # else
+        #     @errors = @cheese.errors.full_messages
+        #     render :new
+        # end
     end
 
 end

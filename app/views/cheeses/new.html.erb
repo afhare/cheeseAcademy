@@ -1,5 +1,15 @@
-<h2>Add a cheese to your library</h2>
-<div class="container">
+<% if @errors %>
+  <h4>Oops! Your cheese was not saved to the database. Please address the following errors and re-attempt.</h4>
+    <ul>
+    <%@errors.each do |error|%>
+        <li><%=error%></li>
+    <%end%>
+  </ul>
+<%end%>
+
+<h1>New Cheese Form</h1>
+<p>Once you have added this cheese to your library, you can create its flavor profile.</p>
+<div class="new-cheese-form">
 <%= form_for @cheese do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
@@ -11,33 +21,26 @@
   <%= f.text_field :origin %><br>
 
   <%= f.label :rind %>
-  <%= f.text_field :rind %><br>
+  <%= f.text_field :rind, list: "rinds_autocomplete" %>
+  <datalist id="rinds_autocomplete">
+    <% ["bloomy","cloth","washed","waxed","fresh/none"].each do |rind| %>
+      <option value="<%= rind %>">
+    <% end %>
+  </datalist><br>
 
   <%= f.label :notes %>
   <%= f.text_area :notes %><br>
 
   <%= f.label :rating %>
   <%= f.number_field :rating, in:0...6 %><br>
-
-  <%= f.label :flavor_wheels, "Create this cheese's 'flavor wheel': " %><br>
-  <%= f.collection_check_boxes :flavor_wheels, @flavors, :id, :kind %>
-
-  <p>TEST CODE</p>
-  <ul>
-    <%= f.collection_check_boxes :flavor_wheels, @flavors, :id, :kind do |b| %>
-  <li>
-    <%= b.label %>
-    <%= b.check_box %>
-  </li>
-    <% end %>
-</ul>
-
-  <%= f.label :cheese_milks, "This cheese is made with: " %><br>
-  <%= f.collection_check_boxes :cheese_milks, @milks, :id, :kind %><br>
-
+  <%= f.label :cheese_milks, "This cheese is made with the following type(s) of milk: " %><br>
+    <div class="cheese-associations" style="width:23%; margin:1em">
+        <%= f.collection_check_boxes :cheese_milks, @milks, :id, :kind %><br>
+    </div>
   <%= f.label :cheese_textures, "This cheese has the following texture(s): " %><br>
-  <%= f.collection_check_boxes :cheese_textures, @textures, :id, :kind %><br>
-
+    <div class="cheese-associations" style="width:23%; margin:1em">
+        <%= f.collection_check_boxes :cheese_textures, @textures, :id, :kind %><br>
+    </div>
   <%= f.submit "Create", class: "submit-button" %>
 <% end %>
 </div>
