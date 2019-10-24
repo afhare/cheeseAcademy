@@ -2,11 +2,8 @@
 
 <h2>Keep track of the cheeses you've tasted, remember your favorites fondly and become a true cheese maestro!</h2>
 
-<h4>Search By Cheese Name</h4>
-
-<h4>Search By Milk Type</h4>
-
-<h4>Search By Cheese Texture</h4>
-
-<h4>Search By Flavor</h4>
-
+<ul>
+<% @cheeses.each do |cheese| %>
+    <li><%= cheese.name%>(<em><%= cheese.milk%></em>)</li>
+    <% end %>
+</ul>

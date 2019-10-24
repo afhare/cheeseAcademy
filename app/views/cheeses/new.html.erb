@@ -23,8 +23,24 @@
   <%= f.label :rind %>
   <%= f.text_field :rind, list: "rinds_autocomplete" %>
   <datalist id="rinds_autocomplete">
-    <% ["bloomy","cloth","washed","waxed","fresh/none"].each do |rind| %>
+    <% ["bloomy","cloth","washed","waxed","fresh", "natural", "none"].each do |rind| %>
       <option value="<%= rind %>">
+    <% end %>
+  </datalist><br>
+
+  <%= f.label :milk %>
+  <%= f.text_field :milk, list: "milks_autocomplete" %>
+  <datalist id="milks_autocomplete">
+    <% ["cow", "goat", "sheep", "buffalo", "raw", "nut-based", "soy", "other"].each do |milk| %>
+      <option value="<%= milk %>">
+    <% end %>
+  </datalist><br>
+
+  <%= f.label :texture %>
+  <%= f.text_field :texture, list: "textures_autocomplete" %>
+  <datalist id="textures_autocomplete">
+    <% ["runny", "soft", "semi-soft", "firm", "semi-firm", "hard"].each do |texture| %>
+      <option value="<%= texture %>">
     <% end %>
   </datalist><br>
 
@@ -33,14 +49,7 @@
 
   <%= f.label :rating %>
   <%= f.number_field :rating, in:0...6 %><br>
-  <%= f.label :cheese_milks, "This cheese is made with the following type(s) of milk: " %><br>
-    <div class="cheese-associations" style="width:23%; margin:1em">
-        <%= f.collection_check_boxes :cheese_milks, @milks, :id, :kind %><br>
-    </div>
-  <%= f.label :cheese_textures, "This cheese has the following texture(s): " %><br>
-    <div class="cheese-associations" style="width:23%; margin:1em">
-        <%= f.collection_check_boxes :cheese_textures, @textures, :id, :kind %><br>
-    </div>
+  
   <%= f.submit "Create", class: "submit-button" %>
 <% end %>
 </div>

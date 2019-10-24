@@ -1,4 +1,4 @@
 class Flavor < ApplicationRecord
-    has_many :flavor_wheels
-    has_many :cheeses, through: :flavor_wheels
+    has_many :flavor_profiles
+    has_many :cheeses, through: :flavor_profiles
 end
