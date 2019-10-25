@@ -4,6 +4,6 @@
 
 <ul>
 <% @cheeses.each do |cheese| %>
-    <li><%= cheese.name%>(<em><%= cheese.milk%></em>)</li>
+    <li><%=  link_to cheese.name, cheese_path(cheese)%> (<em><%= cheese.milk%></em>)</li>
     <% end %>
 </ul>

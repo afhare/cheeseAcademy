@@ -1,0 +1,20 @@
+<% if @errors %>
+  <h4>Oops! This flavor profile for <%=@cheese.name%> was not saved to the database. Please address the following errors and re-attempt.</h4>
+    <ul>
+    <%@errors.each do |error|%>
+        <li><%=error%></li>
+    <%end%>
+  </ul>
+<%end%>
+
+<h1><%=@cheese.name%>'s Flavor Profile Form</h1>
+<div class="flavor-profile-form">
+<%= form_for @profile do |f| %>
+    <%= f.hidden_field :cheese_id, :value => @cheese.id%>
+    <% @flavors.each do |flavor| %>
+        <%= f.label :flavor_id, flavor.kind %>
+        <%= f.check_box :flavor_id, {:multiple => true, include_hidden: false}, flavor.id %><br>
+    <% end %>
+<%= f.submit "Create", class: "submit-button" %>
+<% end %>
+</div>

@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 2019_10_18_204311) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "flavor_profile", force: :cascade do |t|
+  create_table "flavor_profiles", force: :cascade do |t|
     t.integer "cheese_id"
     t.integer "flavor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cheese_id"], name: "index_flavor_profile_on_cheese_id"
-    t.index ["flavor_id"], name: "index_flavor_profile_on_flavor_id"
+    t.index ["cheese_id"], name: "index_flavor_profiles_on_cheese_id"
+    t.index ["flavor_id"], name: "index_flavor_profiles_on_flavor_id"
   end
 
   create_table "flavors", force: :cascade do |t|

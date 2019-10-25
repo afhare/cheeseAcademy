@@ -1,9 +1,18 @@
 <h1><%=@cheese.name%></h1>
 <h2>Characteristics:</h2>
 <ul>
-    <li><%=@cheese.origin%></li>
+    <li>Origin: <%=@cheese.origin%></li>
     <% if @cheese.creamery %>
-        <li><%=@cheese.creamery%></li>
+        <li>Creamery: <%=@cheese.creamery%></li>
     <% end %>
     <li>Type of Rind:<%=@cheese.rind%></li>
 </ul>
+    <% if @cheese.flavors.length > 0%>
+        <p><%= @cheese.name%>'s Flavor Profile:</p>
+        <% @cheese.flavors.each do |flav| %>
+            <%= flav.kind %>
+            <% end %>
+    <% else %>
+        <%= link_to "Add flavor profile", add_flavor_profile_path(@cheese.id) %>
+    <% end %>
+
