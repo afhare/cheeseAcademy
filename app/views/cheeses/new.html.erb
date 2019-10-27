@@ -1,0 +1,55 @@
+<% if @errors %>
+  <h4>Oops! Your cheese was not saved to the database. Please address the following errors and re-attempt.</h4>
+    <ul>
+    <%@errors.each do |error|%>
+        <li><%=error%></li>
+    <%end%>
+  </ul>
+<%end%>
+
+<h1>New Cheese Form</h1>
+<p>Once you have added this cheese to your library, you can create its flavor profile.</p>
+<div class="new-cheese-form">
+<%= form_for @cheese do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :creamery %>
+  <%= f.text_field :creamery %><br>
+
+  <%= f.label :origin %>
+  <%= f.text_field :origin %><br>
+
+  <%= f.label :rind %>
+  <%= f.text_field :rind, list: "rinds_autocomplete" %>
+  <datalist id="rinds_autocomplete">
+    <% ["bloomy","cloth","washed","waxed","fresh", "natural", "none"].each do |rind| %>
+      <option value="<%= rind %>">
+    <% end %>
+  </datalist><br>
+
+  <%= f.label :milk %>
+  <%= f.text_field :milk, list: "milks_autocomplete" %>
+  <datalist id="milks_autocomplete">
+    <% ["cow", "goat", "sheep", "buffalo", "raw", "nut-based", "soy", "other"].each do |milk| %>
+      <option value="<%= milk %>">
+    <% end %>
+  </datalist><br>
+
+  <%= f.label :texture %>
+  <%= f.text_field :texture, list: "textures_autocomplete" %>
+  <datalist id="textures_autocomplete">
+    <% ["runny", "soft", "semi-soft", "firm", "semi-firm", "hard"].each do |texture| %>
+      <option value="<%= texture %>">
+    <% end %>
+  </datalist><br>
+
+  <%= f.label :notes %>
+  <%= f.text_area :notes %><br>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating, in:0...6 %><br>
+  
+  <%= f.submit "Create", class: "submit-button" %>
+<% end %>
+</div>

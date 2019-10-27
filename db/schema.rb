@@ -10,25 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_204509) do
-
-  create_table "cheese_milks", force: :cascade do |t|
-    t.integer "cheese_id"
-    t.integer "milk_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cheese_id"], name: "index_cheese_milks_on_cheese_id"
-    t.index ["milk_id"], name: "index_cheese_milks_on_milk_id"
-  end
-
-  create_table "cheese_textures", force: :cascade do |t|
-    t.integer "cheese_id"
-    t.integer "texture_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cheese_id"], name: "index_cheese_textures_on_cheese_id"
-    t.index ["texture_id"], name: "index_cheese_textures_on_texture_id"
-  end
+ActiveRecord::Schema.define(version: 2019_10_18_204311) do
 
   create_table "cheeses", force: :cascade do |t|
     t.string "name"
@@ -36,34 +18,23 @@ ActiveRecord::Schema.define(version: 2019_10_18_204509) do
     t.string "origin"
     t.string "notes"
     t.string "rind"
+    t.string "milk"
+    t.string "texture"
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "flavor_wheels", force: :cascade do |t|
+  create_table "flavor_profiles", force: :cascade do |t|
     t.integer "cheese_id"
     t.integer "flavor_id"
-    t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cheese_id"], name: "index_flavor_wheels_on_cheese_id"
-    t.index ["flavor_id"], name: "index_flavor_wheels_on_flavor_id"
+    t.index ["cheese_id"], name: "index_flavor_profiles_on_cheese_id"
+    t.index ["flavor_id"], name: "index_flavor_profiles_on_flavor_id"
   end
 
   create_table "flavors", force: :cascade do |t|
-    t.string "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "milks", force: :cascade do |t|
-    t.string "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "textures", force: :cascade do |t|
     t.string "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,9 +1,7 @@
 class Cheese < ApplicationRecord
-    has_many :cheese_textures
-    has_many :cheese_milks
-    has_many :flavor_wheels
-    has_many :textures, through: :cheese_textures
-    has_many :milks, through: :cheese_milks
-    has_many :flavors, through: :flavor_wheels
-    validates :rind, inclusion: { in: %w(bloomy cloth washed waxed fresh/none)}
+    has_many :flavor_profiles
+    has_many :flavors, through: :flavor_profiles
+    validates :rind, inclusion: { in: %w(bloomy cloth washed waxed fresh natural none)}
+    validates :milk, inclusion: { in: %w(cow goat sheep buffalo raw nut-based soy other)}
+    validates :texture, inclusion: { in: %w(runny soft semi-soft firm semi-firm hard)}
 end

@@ -1,2 +1,0 @@
-class CheeseTexturesController < ApplicationController
-end

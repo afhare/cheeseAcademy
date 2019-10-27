@@ -6,6 +6,8 @@ class CreateCheeses < ActiveRecord::Migration[5.2]
       t.string :origin
       t.string :notes
       t.string :rind
+      t.string :milk
+      t.string :texture
       t.integer :rating
 
       t.timestamps
