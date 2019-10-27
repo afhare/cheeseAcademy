@@ -12,6 +12,7 @@
         <% @cheese.flavors.each do |flav| %>
             <%= flav.kind %>
             <% end %>
+        <%= link_to "Update flavor profile", modify_flavor_profile_path(@cheese.id) %>
     <% else %>
         <%= link_to "Add flavor profile", add_flavor_profile_path(@cheese.id) %>
     <% end %>

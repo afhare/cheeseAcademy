@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :cheeses
 
   get '/cheeses/:id/add_flavor_profile', to: 'flavor_profiles#new', as: 'add_flavor_profile'
+  get '/cheeses/:id/edit_flavor_profile', to: 'flavor_profiles#edit', as: 'modify_flavor_profile'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
