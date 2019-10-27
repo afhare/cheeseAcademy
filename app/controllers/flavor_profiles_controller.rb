@@ -19,6 +19,13 @@ class FlavorProfilesController < ApplicationController
         redirect_to cheese_path(@cheese)
     end
 
+    def edit
+        p params
+        @cheese = Cheese.find_by(id: params[:id])
+        @flavors = Flavor.all 
+        @profile = FlavorProfile.find_by(cheese_id: params[:id])
+    end
+
     private
 
     # def cheese_params
