@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_204311) do
+ActiveRecord::Schema.define(version: 2019_10_29_171046) do
 
   create_table "cheeses", force: :cascade do |t|
     t.string "name"
@@ -34,8 +34,23 @@ ActiveRecord::Schema.define(version: 2019_10_18_204311) do
     t.index ["flavor_id"], name: "index_flavor_profiles_on_flavor_id"
   end
 
+  create_table "flavor_taste_categories", force: :cascade do |t|
+    t.integer "flavor_id"
+    t.integer "taste_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flavor_id"], name: "index_flavor_taste_categories_on_flavor_id"
+    t.index ["taste_id"], name: "index_flavor_taste_categories_on_taste_id"
+  end
+
   create_table "flavors", force: :cascade do |t|
     t.string "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tastes", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
