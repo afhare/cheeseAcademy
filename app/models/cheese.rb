@@ -17,4 +17,23 @@ class Cheese < ApplicationRecord
         end
         return taste_hash
     end
+
+    def taste_and_flavor_profile
+        taste_and_flavor_hash = {}
+        self.tastes.map do |taste|
+            taste_and_flavor_hash[taste.name] = []
+        end
+
+        self.flavors.map do |flav|
+            flavor_tastes = flav.tastes.map do |taste| 
+                taste.name 
+            end
+
+            flavor_tastes.each do |taste_name|
+                taste_and_flavor_hash[taste_name] << flav.kind
+            end
+        end
+        return taste_and_flavor_hash
+    end
+
 end
