@@ -20,8 +20,8 @@
     <%= f.hidden_field :cheese_id, :value => @cheese.id%>
     <% @flavors.each do |flavor| %>
         <%= f.label :flavor_id, flavor.kind %>
-        <%= f.check_box :flavor_id, {:multiple => true, include_hidden: false}, flavor.id %><br>
+        <%= f.check_box :flavor_id, {multiple: true, include_hidden: false, :checked => @cheese_flavors.include?(flavor.kind) ? true : false}, flavor.id %><br>
     <% end %>
-<%= f.submit "Create", class: "submit-button" %>
+<%= f.submit "Update", class: "submit-button" %>
 <% end %>
 </div>

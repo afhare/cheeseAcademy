@@ -1,17 +1,26 @@
 <h1><%=@cheese.name%></h1>
 <h2>Characteristics:</h2>
 <ul>
-    <li>Origin: <%=@cheese.origin%></li>
-    <% if @cheese.creamery %>
+    <% if @cheese.origin.length > 0 %>
+        <li>Origin: <%=@cheese.origin%></li>
+    <% end %>
+    <% if @cheese.creamery.length > 0 %>
         <li>Creamery: <%=@cheese.creamery%></li>
     <% end %>
     <li>Type of Rind:<%=@cheese.rind%></li>
 </ul>
     <% if @cheese.flavors.length > 0%>
         <p><%= @cheese.name%>'s Flavor Profile:</p>
+        <ul>
         <% @cheese.flavors.each do |flav| %>
-            <%= flav.kind %>
-            <% end %>
+            <li><%= flav.kind %></li>
+        <% end %>
+        </ul>
+        <p><%= @cheese.name%>'s Taste Profile:</p>
+        <% @cheese.tastes.uniq.each do |taste| %>
+            | <%= taste.name %> | 
+        <% end %>
+        <br>
         <%= link_to "Update flavor profile", modify_flavor_profile_path(@cheese.id) %>
     <% else %>
         <%= link_to "Add flavor profile", add_flavor_profile_path(@cheese.id) %>

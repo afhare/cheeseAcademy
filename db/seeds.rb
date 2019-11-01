@@ -33,14 +33,14 @@ end
     FlavorTasteCategory.create(flavor: caramel, taste: Taste.find_by(name: "sweet"))
 # sour
     lemon = Flavor.find_by(kind: "lemon")
+    sharp = Flavor.find_by(kind: "sharp/tangy")
     FlavorTasteCategory.create(flavor: lemon, taste: Taste.find_by(name: "sour"))
+    FlavorTasteCategory.create(flavor: sharp, taste: Taste.find_by(name: "sour"))
 # bitter
     milky = Flavor.find_by(kind: "milky/lactic")
-    sharp = Flavor.find_by(kind: "sharp/tangy")
     grassy = Flavor.find_by(kind: "grassy")
     herbal = Flavor.find_by(kind: "herbal")
     FlavorTasteCategory.create(flavor: milky, taste: Taste.find_by(name: "bitter"))
-    FlavorTasteCategory.create(flavor: sharp, taste: Taste.find_by(name: "bitter"))
     FlavorTasteCategory.create(flavor: grassy, taste: Taste.find_by(name: "bitter"))
     FlavorTasteCategory.create(flavor: herbal, taste: Taste.find_by(name: "bitter"))
 # umami
