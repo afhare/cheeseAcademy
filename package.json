@@ -2,7 +2,7 @@
   "name": "cheeseAcademy",
   "private": true,
   "dependencies": {
-    "chartkick": "^3.1.3",
+    "chartkick": "^3.2.0",
     "highcharts": "^7.2.1"
   }
 }
